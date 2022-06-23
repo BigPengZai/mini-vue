@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="./renderer.js"></script>
+
+    <script>
+
+        // 1.通过h函数穿件一个vnode
+        const vnode  = h('div',{class:"peyton",id:'aaa',bg:'color1'},[
+            h('h1',null,'我的姓名:peyton'),
+            h('button',{onClick:function(){}},'修改')
+        ])
+        // console.log(vnode)
+        // 2.mount 将vnode 挂载到 真实dom  ,将虚拟dom 转化为真实dom 的过程
+        mount(vnode,document.getElementById('app'))
+
+        // 3.创建新的 vnode
+        const vnode1  = h('h2',{class:'peng',id:'aaa'},'peng')
+        setTimeout(()=>{
+            patch(vnode,vnode1)
+        },2000)
+        
+    </script>
+</body>
+</html>
